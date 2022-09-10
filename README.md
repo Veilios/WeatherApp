@@ -5,9 +5,7 @@ Simple weather app using a public api.
 ## Technology
   1. Next.js
   2. OpenWeatherMap
+  3. Tailwind
   
 
 ## To-Do
-  [Done] - Pick a framework
-  [ ] - Create design
-  [ ] - Create a Home page
