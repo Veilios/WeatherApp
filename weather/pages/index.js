@@ -10,7 +10,7 @@ export default function Home() {
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${'Duluth'}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${'Duluth'}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`
 
   const fetchWeather = (e) => {
     e.preventDefault();
@@ -37,7 +37,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <button onClick={fetchWeather}>Fetch Data</button>
+      {/* Overlay */}
+      <div className='absolute top-0  left-0 right-0 bottom-0 bg-black/40 z-[1]' />
+
+      {/* Background Image */}
+      <Image
+        src='https://images.unsplash.com/photo-1601134467661-3d775b999c8b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1975&q=80'
+        layout='fill'
+        className='object-cover'
+      />
+
+      {/* Search Bar */}
+      <div className='relative flex justify-between items-center max-w-[500px] w-full m-auto pt-4 text-white z-10'>
+        <form className='flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-white rounded-2xl'>
+          <div>
+            <input
+              className='bg-transparent border-none text-white focus:outline-none text-2xl placeholder:text-white'
+              type="text"
+              placeholder="Search City"
+            />
+          </div>
+
+          <button onClick={fetchWeather}><BsSearch size={20} /></button>
+        </form>
+      </div>
     </div>
   );
 };
