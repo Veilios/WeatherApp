@@ -1,5 +1,7 @@
 # WeatherApp
-Simple weather app using a public api.
+  Simple weather app built with Next.js and Tailwind CSS
+  Weather information is being supplied by OpenWeatherMap.org
+  
 
 
 ## Technology
@@ -10,3 +12,6 @@ Simple weather app using a public api.
   
 
 ## To-Do
+  [] - Display hourly change and weekly weather
+  [] - Make mobile responsive
+  [] - Fetch current location and display weather
