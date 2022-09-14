@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import axios from 'axios';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import { useEffect } from 'react';
 
@@ -10,27 +10,31 @@ import Spinner from '../components/Spinner';
 
 export default function Home() {
 
-  const [coords, setCoords] = useState();
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
 
   const urlSearch = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
-  // const urlStart = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
 
-  const getCurrentLocation = () => {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        setCoords(position.coords);
-      });
-    } else {
-      console.log("unavailable");
-    }
-  }
 
   useEffect(() => {
-    console.log(coords);
-  }, []);
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`)
+          .then(response => response.json())
+          .then(data => {
+            setWeather(data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+
+      });
+    } else {
+      console.log('geolocation not available');
+    }
+  }, [!weather]);
+
 
 
 
@@ -94,6 +98,4 @@ export default function Home() {
       </div>
     );
   }
-
-
 };
