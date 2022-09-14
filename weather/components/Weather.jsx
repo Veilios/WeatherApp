@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
-import axios from 'axios';
 
 const Weather = ({ data }) => {
 
     return (
         <div className='relative flex flex-col justify-between max-w-[500px] w-full h-[80vh] m-auto p-12 text-gray-300 z-10'>
-            {/* Top */}
+            {/* Weather type and tempature */}
             <div className='relative flex justify-between pt-12'>
                 <div className='flex flex-col items-center'>
                     <Image
@@ -19,7 +18,7 @@ const Weather = ({ data }) => {
                 </div>
                 <p className='text-8xl'>{data.main.temp.toFixed(0)}&#176;</p>
             </div>
-            {/* Bottom */}
+            {/* feels like, humidity and wind speed */}
             <div className='bg-black/50 relative p-8 rounded-md'>
                 <p className='text-2xl text-center pb-6'>Weather in {data.name}</p>
                 <div className='flex justify-between text-center'>

@@ -9,7 +9,7 @@ import Weather from '../components/Weather';
 import Spinner from '../components/Spinner';
 
 export default function Home() {
-
+  
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState({});
   const [loading, setLoading] = useState(false);
@@ -26,6 +26,7 @@ export default function Home() {
           .then(data => {
             setWeather(data);
             setLoading(false);
+            console.log(weather);
           })
           .catch(err => {
             console.log(err);
@@ -83,6 +84,7 @@ export default function Home() {
               className='bg-transparent border-none text-white focus:outline-none text-2xl placeholder:text-white'
               type="text"
               placeholder="Search City"
+              value={city}
             />
           </div>
 
@@ -91,8 +93,8 @@ export default function Home() {
       </div>
 
       {/* Weather */}
-      {loading ? <Spinner className='border-solid border-color: red'/> : weather.main && <Weather data={weather} />}
-      
+      {loading ? <Spinner className='border-solid border-color: red' /> : weather.main && <Weather data={weather} />}
+
     </div>
   );
 };
