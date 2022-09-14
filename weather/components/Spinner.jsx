@@ -5,11 +5,13 @@ import spinner from '../public/Spinner.gif';
 const Spinner = () => {
   return (
     <>
-        <Image 
-        className='w-[200px] m-auto block'
-        src={spinner} 
+      <Image
+        src={spinner}
         alt='loading...'
-        />
+        layout='fill'
+        objectFit='scale-down'
+        priority
+      />
     </>
   );
 };
