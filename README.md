@@ -12,6 +12,5 @@
   
 
 ## To-Do
-  [] - Display hourly change and weekly weather
   [] - Make mobile responsive
-  [] - Fetch current location and display weather
+  [Done] - Fetch current location and display weather
